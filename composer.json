@@ -1,0 +1,27 @@
+{
+    "name": "mquery/sinmore",
+    "description": "An SDK for quick start projects",
+    "license": "MIT",
+    "authors": [{
+        "name": "guojian",
+        "email": "n6878088@163.com"
+    }],
+    "require": {
+        "overtrue/wechat": "^4.1",
+        "overtrue/easy-sms": "^1.1",
+        "overtrue/laravel-lang": "^3.0",
+        "overtrue/laravel-ueditor": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mquery\\Sinmore\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mquery\\Sinmore\\GenerateServiceProvider"
+            ]
+        }
+    }
+}
