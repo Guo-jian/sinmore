@@ -119,7 +119,7 @@ class GenerateServiceProvider extends ServiceProvider
         $env .= 'APP_ENV='.env('APP_ENV')."\n";
         $env .= 'APP_KEY='.env('APP_KEY')."\n";
         $env .= 'APP_ATTACH='.substr(env('APP_KEY'),8,7)."\n";
-        $env .= 'APP_DEBUG='.env('APP_DEBUG')."\n";
+        $env .= 'APP_DEBUG=true'."\n";
         $env .= 'APP_LOG_LEVEL='.env('APP_LOG_LEVEL')."\n";
         $env .= 'APP_URL='.env('APP_URL')."\n";
         $env .= 'HTML_UTL='."\n";

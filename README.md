@@ -21,6 +21,8 @@ $ php artisan vendor:publish --provider="Mquery\Sinmore\GenerateServiceProvider"
 
 $ php artisan migrate
 
+$ composer dump-autoload
+
 $ php artisan db:seed
 
 需要富文本的话
