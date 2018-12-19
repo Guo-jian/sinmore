@@ -10,7 +10,7 @@
 ## Installing
 
 ```shell
-$ composer require "mquery/sinmore"
+$ composer require mquery/sinmore:dev-master -vvv
 ```
 
 ## Usage
