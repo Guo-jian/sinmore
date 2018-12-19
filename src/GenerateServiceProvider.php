@@ -74,10 +74,6 @@ class GenerateServiceProvider extends ServiceProvider
             __DIR__.'/config/wechat.php' => config_path('wechat.php'),
         ]);
         $this->publishes([
-            __DIR__.'/route/admin.php' => base_path('routes/admin.php'),
-            __DIR__.'/route/common.php' => base_path('routes/common.php'),
-        ]);
-        $this->publishes([
             __DIR__.'/migration/create_admins_table.php' => database_path('migrations/2018_12_20_121212_create_admins_table.php'),
             __DIR__.'/migration/create_groups_table.php' => database_path('migrations/2018_12_20_121212_create_groups_table.php'),
             __DIR__.'/migration/create_rules_table.php' => database_path('migrations/2018_12_20_121212_create_rules_table.php'),
@@ -100,6 +96,10 @@ class GenerateServiceProvider extends ServiceProvider
             __DIR__.'/seed/RulesTableSeeder.php' => database_path('seeds/RulesTableSeeder.php'),
             __DIR__.'/seed/AdminsTableSeeder.php' => database_path('seeds/AdminsTableSeeder.php'),
         ]);
+        require_once __DIR__.'/route/admin.php';
+        file_put_contents(base_path('routes/admin.php'),$admin);
+        require_once __DIR__.'/route/common.php';
+        file_put_contents(base_path('routes/common.php'),$common);
         require_once __DIR__.'/http/Controller.php';
         file_put_contents(app_path('Http/Controllers/Controller.php'),$controller);
         require_once __DIR__.'/http/Kernel.php';

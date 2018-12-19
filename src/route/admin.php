@@ -1,5 +1,8 @@
 <?php
 
+$admin = <<<'CREATEDATA'
+<?php
+
 use Illuminate\Http\Request;
 
 //添加
@@ -310,3 +313,4 @@ Route::prefix('contact')->group(function () {
     //修改
     Route::post('update', 'Admin\Contact\ContactController@update');
 });
+CREATEDATA;

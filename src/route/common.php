@@ -1,5 +1,8 @@
 <?php
 
+$common = <<<'CREATEDATA'
+<?php
+
 use Illuminate\Http\Request;
 
 //获取所有权限
@@ -19,3 +22,4 @@ Route::post('upload','Common\CommonController@upload');
 
 //单图上传
 Route::post('uploadOnce','Common\CommonController@uploadOnce');
+CREATEDATA;
