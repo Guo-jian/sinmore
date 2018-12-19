@@ -72,6 +72,7 @@ class GenerateServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/lang.php' => config_path('lang.php'),
             __DIR__.'/config/wechat.php' => config_path('wechat.php'),
+            __DIR__.'/config/code.php' => config_path('code.php'),
         ]);
         $this->publishes([
             __DIR__.'/migration/create_admins_table.php' => database_path('migrations/2018_12_20_121212_create_admins_table.php'),
