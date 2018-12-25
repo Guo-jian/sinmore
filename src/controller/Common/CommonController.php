@@ -201,4 +201,31 @@ class CommonController extends Controller
         }
         return $this->returnJson('success', ['url'=>env('APP_URL').'/storage/'.$req->model.'/'.date('Ymd').'/'.$req->file->store('', $req->model, 'public')]);
     }
+
+    /**
+     * showdoc
+     * @catalog 通用
+     * @title 资讯分类
+     * @description 资讯分类的接口
+     * @method post
+     * @url common/categroy
+     * @param category_id 必传 int 资讯id(获取一级分类传0)
+     * @return {"error_code":0,"error_msg":"\u6210\u529f","data":[{"id":3,"name":"\u5927\u724c\u4f01\u4e1a","thumb":""},{"id":1,"name":"app","thumb":""},{"id":2,"name":"\u7269\u8054\u7f51","thumb":""}]}
+     * @return_param error_code number 无
+     * @return_param error_msg string 无
+     * @return_param -data object 无
+     * @return_param id int 资讯分类id
+     * @return_param name string 资讯分类名称
+     * @return_param thumb string 资讯分类缩略图
+     * @remark
+     * @number 7
+     */
+    public function categroy(Request $req)
+    {
+        $this->useValidator($req,[
+            'category_id'=>[0,1,102]
+        ]);
+        $data = \App\Models\Category::select('id','name','thumb')->where('pid',$req->category_id)->where('status',1)->orderBy('sort','desc')->get();
+        return $this->returnJson('success',$data);
+    }
 }
