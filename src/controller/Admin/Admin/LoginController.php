@@ -39,7 +39,7 @@ class LoginController extends Controller
     public function login(Request $req)
     {
         $this->useValidator($req, [
-            'mobile'=>[0,1,101,301],
+            'mobile'=>[0,1,101,101],
             'password'=>[0,1,101,220]
         ]);
         $data = Admin::where('mobile', $req->mobile)->where('password', md5(md5($req->password).env('APP_ATTACH')))->first();
