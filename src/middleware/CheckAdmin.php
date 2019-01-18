@@ -40,26 +40,26 @@ class CheckAdmin
                 'data' => (object)[]
             ]);
         }
-        if (time() > strtotime($data->expired_at)) {
-            return response()->json([
-                'error_code' => config('lang.password has expired.code') ?? 9999,
-                'error_msg' => ('zh-CN' == config('app.locale')) ? config('lang.password has expired.msg') ?? 'password has expired' : 'password has expired',
-                'data' => (object)[]
-            ]);
-        }
-        $data->expired_at = date('Y-m-d H:i:s', strtotime('+4 hours'));
-        if (false == $data->save()) {
-            return response()->json([
-                'error_code' => config('lang.data save failed.code') ?? 9999,
-                'error_msg' => ('zh-CN' == config('app.locale')) ? config('lang.data save failed.msg') ?? 'data save failed' : 'data save failed',
-                'data' => (object)[]
-            ]);
-        }
         if (1 != $data->id) {
             if (0 == \App\Models\Rule::where('rule', $request->path())->whereIn('id', explode(',', $data->getGroup->rules))->count()) {
                 return response()->json([
                     'error_code' => config('lang.no such permission.code') ?? 9999,
                     'error_msg' => ('zh-CN' == config('app.locale')) ? config('lang.no such permission.msg') ?? 'no such permission' : 'no such permission',
+                    'data' => (object)[]
+                ]);
+            }
+            if (time() > strtotime($data->expired_at)) {
+                return response()->json([
+                    'error_code' => config('lang.password has expired.code') ?? 9999,
+                    'error_msg' => ('zh-CN' == config('app.locale')) ? config('lang.password has expired.msg') ?? 'password has expired' : 'password has expired',
+                    'data' => (object)[]
+                ]);
+            }
+            $data->expired_at = date('Y-m-d H:i:s', strtotime('+4 hours'));
+            if (false == $data->save()) {
+                return response()->json([
+                    'error_code' => config('lang.data save failed.code') ?? 9999,
+                    'error_msg' => ('zh-CN' == config('app.locale')) ? config('lang.data save failed.msg') ?? 'data save failed' : 'data save failed',
                     'data' => (object)[]
                 ]);
             }
