@@ -39,6 +39,12 @@ Route::prefix('version')->group(function () {
     Route::post('andriod', 'Api\Version\VersionController@andriod');
 });
 
+//banner
+Route::prefix('banner')->group(function () {
+
+    Route::post('list', 'Api\Banner\BannerController@list');
+});
+
 Route::prefix('wechat')->group(function () {
 
     //小程序登录

@@ -17,4 +17,11 @@ class Banner extends Model
             return $query->select('banner_id', 'type');
         }]);
     }
+
+    public function scopeSearchHasType($query, $type)
+    {
+        return $query->whereHas('getType', function ($query) use ($type) {
+            $query->where('type', $type);
+        });
+    }
 }

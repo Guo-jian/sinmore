@@ -39,6 +39,7 @@ class GenerateServiceProvider extends ServiceProvider
                 __DIR__.'/controller/Api/User/UserController.php' => app_path('Http/Controllers/Api/User/UserController.php'),
                 __DIR__.'/controller/Api/User/LoginController.php' => app_path('Http/Controllers/Api/User/LoginController.php'),
                 __DIR__.'/controller/Api/Version/VersionController.php' => app_path('Http/Controllers/Api/Version/VersionController.php'),
+                __DIR__.'/controller/Api/Banner/BannerController.php' => app_path('Http/Controllers/Api/Banner/BannerController.php'),
                 __DIR__.'/controller/Common/CommonController.php' => app_path('Http/Controllers/Common/CommonController.php'),
             ]);
             $this->publishes([
