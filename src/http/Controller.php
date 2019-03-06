@@ -44,6 +44,10 @@ class Controller extends BaseController
                 $field[$k][] = 'confirmed';
                 $explain[$k . '.confirmed'] = $k . '两次输入不一直';
             }
+            if (in_array(5, $v)) {
+                $field[$k][] = 'distinct';
+                $explain[$k . '.distinct'] = $k . '数据不可重复';
+            }
             //数据类型100-199
             if (in_array(100, $v)) {
                 $field[$k][] = 'boolean';
@@ -87,11 +91,15 @@ class Controller extends BaseController
             }
             if (in_array(110, $v)) {
                 $field[$k][] = 'timezone';
-                $explain[$k . '.timezone'] = $k . '必须是时间格式';
+                $explain[$k . '.timezone'] = $k . '必须是时区格式';
             }
             if (in_array(111, $v)) {
                 $field[$k][] = 'file';
                 $explain[$k . '.file'] = $k . '必须是文件格式';
+            }
+            if (in_array(112, $v)) {
+                $field[$k][] = 'date_format:H:i:s';
+                $explain[$k . '.date_format:H:i:s'] = $k . '必须是时间格式';
             }
 
             //数据长度验证200-299

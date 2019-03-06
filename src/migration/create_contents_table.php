@@ -20,7 +20,7 @@ class CreateContentsTable extends Migration
             $table->string('title')->default('')->comment('title');
             $table->string('description')->default('')->comment('description');
             $table->string('keywords')->default('')->comment('keywords');
-            $table->string('content');
+            $table->text('content')->comment('内容');
             $table->unsignedInteger('view')->default(0)->comment('浏览量');
             $table->timestamps();
         });

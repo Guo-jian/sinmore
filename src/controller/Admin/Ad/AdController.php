@@ -193,8 +193,8 @@ class AdController extends Controller
     /**
      * showdoc
      * @catalog 其他管理/开屏广告图管理
-     * @title 列表
-     * @description 广告图列表的接口
+     * @title 搜索
+     * @description 广告图搜索的接口
      * @method post
      * @url admin/ad/keyword
      * @param token 必选 string 标识
