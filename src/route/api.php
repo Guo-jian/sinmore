@@ -42,6 +42,7 @@ Route::prefix('version')->group(function () {
 //banner
 Route::prefix('banner')->group(function () {
 
+    //列表
     Route::post('list', 'Api\Banner\BannerController@list');
 });
 
@@ -62,7 +63,7 @@ Route::prefix('mobile')->group(function () {
     //密码登录
     Route::post('passwordLogin', 'Api\User\LoginController@passwordLogin');
 
-    //
+    //重置密码
     Route::post('resetPassword', 'Api\User\LoginController@resetPassword');
 });
 
