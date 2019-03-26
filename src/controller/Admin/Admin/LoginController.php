@@ -15,7 +15,7 @@ class LoginController extends Controller
      * @description 管理员登录的接口
      * @method post
      * @url admin/login
-     * @param mobile 必选 string 手机号
+     * @param account 必选 string 帐号(手机号)
      * @param password 必选 string 密码
      * @return {"error_code":0,"error_msg":"\u6210\u529f","data":{"token":"fdfeddc5dd44f2b0382052f78fdef5e1","name":"\u90ed\u5efa","rule":[{"id":1,"pid":0,"title":"\u6743\u9650\u7cfb\u7edf","path":"","get_rule":[{"id":2,"pid":1,"title":"\u7ba1\u7406\u7ec4","path":"","get_rule":[{"id":3,"pid":2,"title":"\u6dfb\u52a0\u7ba1\u7406\u7ec4","path":""},{"id":4,"pid":2,"title":"\u4fee\u6539\u7ba1\u7406\u7ec4","path":""},{"id":5,"pid":2,"title":"\u7ba1\u7406\u7ec4\u8be6\u60c5","path":""},{"id":6,"pid":2,"title":"\u5220\u9664\u7ba1\u7406\u7ec4","path":""},{"id":7,"pid":2,"title":"\u8bbe\u7f6e\u6743\u9650","path":""},{"id":8,"pid":2,"title":"\u6743\u9650\u8be6\u60c5","path":""}]},{"id":9,"pid":1,"title":"\u7ba1\u7406\u5458","path":"","get_rule":[{"id":10,"pid":9,"title":"\u6dfb\u52a0\u7ba1\u7406\u5458","path":""}]}]}]}}
      * @return_param error_code int 错误码
@@ -39,10 +39,10 @@ class LoginController extends Controller
     public function login(Request $req)
     {
         $this->useValidator($req, [
-            'mobile'=>[0,1,101,101],
+            'account'=>[0,1,101],
             'password'=>[0,1,101,220]
         ]);
-        $data = Admin::where('mobile', $req->mobile)->where('password', md5(md5($req->password).env('APP_ATTACH')))->first();
+        $data = Admin::where(function($query){$query->where('mobile', $req->mobile)->orWhere('account',$req->account)})->where('password', md5(md5($req->password).env('APP_ATTACH')))->first();
         if (false == $data) {
             return $this->returnJson('account or password error');
         }

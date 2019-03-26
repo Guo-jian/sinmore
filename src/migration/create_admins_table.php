@@ -1,20 +1,27 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+/*
+ * This file is part of the mquery/sinmore.
+ *
+ * (c) guojian <n6878088@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('account', 20)->index('account')->comment('帐号')->default('');
             $table->string('name', 20)->index('name')->comment('用户名')->default('');
             $table->string('password', 32)->comment('登录密码')->default('');
             $table->char('mobile', 11)->index('mobile')->comment('电话')->default('');
@@ -29,8 +36,6 @@ class CreateAdminsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

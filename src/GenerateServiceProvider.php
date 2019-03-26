@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * This file is part of the mquery/sinmore.
+ *
+ * (c) guojian <n6878088@163.com>
+ *
+ * This source file is subject to the MIT license that is bundled.
+ */
+
 namespace Mquery\Sinmore;
 
 use Illuminate\Support\ServiceProvider;
@@ -9,13 +17,12 @@ use Illuminate\Support\ServiceProvider;
  */
 class GenerateServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap any application services.
      */
     public function boot()
     {
-        if(false == is_file(public_path('lock.php'))){
+        if (false == is_file(public_path('lock.php'))) {
             $this->publishes([
                 __DIR__.'/controller/Admin/Ad/AdController.php' => app_path('Http/Controllers/Admin/Ad/AdController.php'),
                 __DIR__.'/controller/Admin/Admin/AdminController.php' => app_path('Http/Controllers/Admin/Admin/AdminController.php'),
@@ -98,29 +105,30 @@ class GenerateServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/seed/RulesTableSeeder.php' => database_path('seeds/RulesTableSeeder.php'),
                 __DIR__.'/seed/AdminsTableSeeder.php' => database_path('seeds/AdminsTableSeeder.php'),
+                __DIR__.'/seed/GroupsTableSeeder.php' => database_path('seeds/GroupsTableSeeder.php'),
             ]);
             require_once __DIR__.'/route/admin.php';
-            file_put_contents(base_path('routes/admin.php'),$admin);
+            file_put_contents(base_path('routes/admin.php'), $admin);
             require_once __DIR__.'/route/common.php';
-            file_put_contents(base_path('routes/common.php'),$common);
+            file_put_contents(base_path('routes/common.php'), $common);
             require_once __DIR__.'/http/Controller.php';
-            file_put_contents(app_path('Http/Controllers/Controller.php'),$controller);
+            file_put_contents(app_path('Http/Controllers/Controller.php'), $controller);
             require_once __DIR__.'/http/Kernel.php';
-            file_put_contents(app_path('Http/Kernel.php'),$kernel);
+            file_put_contents(app_path('Http/Kernel.php'), $kernel);
             require_once __DIR__.'/route/api.php';
-            file_put_contents(base_path('routes/api.php'),$api);
+            file_put_contents(base_path('routes/api.php'), $api);
             require_once __DIR__.'/config/app.php';
-            file_put_contents(config_path('app.php'),$app);
+            file_put_contents(config_path('app.php'), $app);
             require_once __DIR__.'/config/filesystems.php';
-            file_put_contents(config_path('filesystems.php'),$filesystems);
+            file_put_contents(config_path('filesystems.php'), $filesystems);
             require_once __DIR__.'/provider/RouteServiceProvider.php';
-            file_put_contents(app_path('Providers/RouteServiceProvider.php'),$routeServiceProvider);
+            file_put_contents(app_path('Providers/RouteServiceProvider.php'), $routeServiceProvider);
             require_once __DIR__.'/seed/DatabaseSeeder.php';
-            file_put_contents(database_path('seeds/DatabaseSeeder.php'),$databaseSeeder);
+            file_put_contents(database_path('seeds/DatabaseSeeder.php'), $databaseSeeder);
             $env = 'APP_NAME='.env('APP_NAME')."\n";
             $env .= 'APP_ENV='.env('APP_ENV')."\n";
             $env .= 'APP_KEY='.env('APP_KEY')."\n";
-            $env .= 'APP_ATTACH='.substr(env('APP_KEY'),8,7)."\n";
+            $env .= 'APP_ATTACH='.substr(env('APP_KEY'), 8, 7)."\n";
             $env .= 'APP_DEBUG=true'."\n";
             $env .= 'APP_LOG_LEVEL='.env('APP_LOG_LEVEL')."\n";
             $env .= 'APP_URL='.env('APP_URL')."\n";
@@ -155,7 +163,7 @@ class GenerateServiceProvider extends ServiceProvider
             $env .= 'WECHAT_OFFICIAL_ACCOUNT_SECRET='.env('WECHAT_OFFICIAL_ACCOUNT_SECRET')."\n";
             $env .= 'WECHAT_OFFICIAL_ACCOUNT_OAUTH_SCOPES='.env('WECHAT_OFFICIAL_ACCOUNT_OAUTH_SCOPES')."\n";
             $env .= 'WECHAT_OFFICIAL_ACCOUNT_OAUTH_CALLBACK='.env('WECHAT_OFFICIAL_ACCOUNT_OAUTH_CALLBACK')."\n";
-            file_put_contents(base_path('.env'),$env);
+            file_put_contents(base_path('.env'), $env);
             $this->publishes([
                 __DIR__.'/lock/lock.php' => public_path('lock.php'),
             ]);
