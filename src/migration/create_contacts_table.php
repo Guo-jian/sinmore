@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('content')->comment('内容')->default('');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `contacts` comment'联系我们表'");
     }
 
     /**

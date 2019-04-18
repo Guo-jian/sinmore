@@ -19,6 +19,7 @@ class CreateAdTypesTable extends Migration
             $table->unsignedTinyInteger('type')->default(0)->index('type')->comment('1安卓,2ios,3小程序,4pc,5h5,6ipad');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `ad_types` comment'广告展示终端表'");
     }
 
     /**

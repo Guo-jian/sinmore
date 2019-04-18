@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('desc')->comment('描述')->default('');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `users` comment'用户表'");
     }
 
     /**

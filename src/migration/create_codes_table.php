@@ -22,6 +22,7 @@ class CreateCodesTable extends Migration
             $table->unsignedTinyInteger('type')->comment('类型:1注册登录,2找回密码,3绑定手机')->default(1);
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `codes` comment'验证码表'");
     }
 
     /**

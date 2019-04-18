@@ -22,6 +22,7 @@ class CreateUserFreezesTable extends Migration
             $table->unsignedInteger('admin_id')->comment('管理员id')->default(0);
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `user_freezes` comment'用户冻结历史表'");
     }
 
     /**

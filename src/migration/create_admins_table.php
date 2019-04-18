@@ -32,6 +32,7 @@ class CreateAdminsTable extends Migration
             $table->timestamp('expired_at')->comment('失效时间')->useCurrent();
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `admins` comment'管理员表'");
     }
 
     /**

@@ -24,6 +24,7 @@ class CreateRulesTable extends Migration
             $table->string('path', 50)->default('')->comment('前台路由');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `rules` comment'权限表'");
     }
 
     /**

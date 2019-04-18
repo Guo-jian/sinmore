@@ -20,6 +20,7 @@ class CreateGroupsTable extends Migration
             $table->text('rules')->nullable($value = true)->comment('组所拥有权限,以,隔开');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `groups` comment'管理组表'");
     }
 
     /**

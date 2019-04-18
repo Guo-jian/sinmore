@@ -25,6 +25,7 @@ class CreateBannersTable extends Migration
             $table->unsignedInteger('view')->default(0)->comment('真实点击量');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `banners` comment'banner表'");
     }
 
     /**

@@ -30,9 +30,10 @@ class CreateInfosTable extends Migration
             $table->unsignedInteger('view')->default(0)->comment('真实点击量');
             $table->unsignedTinyInteger('status')->default(1)->index('status')->comment('状态:1为正常,0为冻结');
             $table->unsignedTinyInteger('top')->default(0)->index('top')->comment('状态:1为置顶,0为未置顶');
-            $table->string('content')->comment('内容');
+            $table->text('content')->comment('内容');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `infos` comment'资讯表'");
     }
 
     /**

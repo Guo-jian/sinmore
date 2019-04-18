@@ -20,6 +20,7 @@ class CreateAndriodsTable extends Migration
             $table->unsignedTinyInteger('version')->default(0)->index('version')->comment('版本号');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `andriods` comment'安卓版本表'");
     }
 
     /**

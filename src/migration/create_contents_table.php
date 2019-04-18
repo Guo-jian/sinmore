@@ -24,6 +24,7 @@ class CreateContentsTable extends Migration
             $table->unsignedInteger('view')->default(0)->comment('浏览量');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `contents` comment'单页资讯表'");
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateIosTable extends Migration
             $table->unsignedTinyInteger('version')->default(0)->index('version')->comment('版本号');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `ios` comment'ios版本表'");
     }
 
     /**

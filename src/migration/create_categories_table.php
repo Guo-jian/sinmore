@@ -25,6 +25,7 @@ class CreateCategoriesTable extends Migration
             $table->unsignedTinyInteger('level')->default(1)->comment('层级');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `categories` comment'资讯分类表'");
     }
 
     /**

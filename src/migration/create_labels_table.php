@@ -20,6 +20,7 @@ class CreateLabelsTable extends Migration
             $table->string('pic')->default('')->comment('推荐图');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `labels` comment'标签表'");
     }
 
     /**

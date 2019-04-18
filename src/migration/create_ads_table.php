@@ -24,6 +24,7 @@ class CreateAdsTable extends Migration
             $table->unsignedInteger('view')->default(0)->comment('真实点击量');
             $table->timestamps();
         });
+        \DB::statement("ALTER TABLE `ads` comment'广告表'");
     }
 
     /**
