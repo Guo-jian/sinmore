@@ -42,7 +42,9 @@ class LoginController extends Controller
             'account'=>[0,1,101],
             'password'=>[0,1,101,220]
         ]);
-        $data = Admin::where(function($query){$query->where('mobile', $req->mobile)->orWhere('account',$req->account)})->where('password', md5(md5($req->password).env('APP_ATTACH')))->first();
+        $data = Admin::where(function ($query) use ($req) {
+            $query->where('mobile', $req->mobile)->orWhere('account', $req->account);
+        })->where('password', md5(md5($req->password).env('APP_ATTACH')))->first();
         if (false == $data) {
             return $this->returnJson('account or password error');
         }
